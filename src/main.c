@@ -7,7 +7,6 @@ int iGameState = GSTATE_title;
 
 void setup()
 {
-
     CIA2.ddra |= 0x03;
     CIA2.pra &= 0xfc;
 
@@ -24,25 +23,25 @@ void setup()
 
 int main(void)
 {
-
 	setup();
+
     while(1)
     {
 		switch (iGameState)
 		{
-		case GSTATE_title:
-			showtitle();
-            iGameState = GSTATE_ingame;
-			break;
-		case GSTATE_ingame:
-            ingame();
-			break;
-		case GSTATE_showhighscore:
-			break;
-		case GSTATE_newhighscore:
-			break;
-		default:
-			break;
+            case GSTATE_title:
+                showtitle();
+                iGameState = GSTATE_ingame;
+                break;
+    		case GSTATE_ingame:
+                ingame();
+    			break;
+    		case GSTATE_showhighscore:
+    			break;
+    		case GSTATE_newhighscore:
+    			break;
+    		default:
+                break;
 		}
     }
 }

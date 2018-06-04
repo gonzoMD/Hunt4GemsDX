@@ -7,7 +7,7 @@ void ingame();
 struct gems
 {
 	int color;
-	int x,y;
+	int x, y;
 	int value;
 	int speed;
 };
