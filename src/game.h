@@ -2,6 +2,7 @@
 #define GAME_H
 
 void preparegame();
+void movebasket();
 void ingame();
 
 struct gems
