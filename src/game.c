@@ -1,9 +1,9 @@
 #include "globals.h"
 #include "drawing.h"
 #include "data.h"
-#include "joystick.h"
+#include "basket.h"
 
-int gametime=75, level=1, score=0, x=150;
+int gametime=75, level=1, score=0;
 
 void preparegame()
 {
@@ -42,72 +42,16 @@ void preparegame()
     VIC.spr_exp_x = VIC.spr_exp_y=0;
 }
 
-void movebasket()
-{
-    switch (getstate(PORT_B))
-    {
-        case JOY_LEFT:
-            if (x>24)
-            {
-                x--;
-            }
-        break;
-        case JOY_RIGHT:
-            if (x<273)
-            {
-                x++;
-            }
-        break;
-    }
-
-    if(x>207)
-    {
-        VIC.spr_hi_x |=4;
-        if(x>231)
-        {
-            VIC.spr_hi_x |=2;
-            if(x>255)
-            {
-                VIC.spr_hi_x |=1;
-            }
-            else
-            {
-                VIC.spr_hi_x &=254;
-            }
-        }
-        else
-        {
-            VIC.spr_hi_x &=253;
-        }
-    }
-    else
-    {
-        VIC.spr_hi_x &=251;
-    }
-    VIC.spr0_x = x;
-    VIC.spr1_x = x + 24;
-    VIC.spr2_x = x + 48;
-}
-
 void ingame()
 {
     clock_t t1, t2;
-    int i;
 
     for(level=1; level<=10; level++)
     {
         preparegame();
-        VIC.spr0_color = VIC.spr1_color = VIC.spr2_color = COLOR_BROWN;
-        for(i=0; i<3; i++)
-        {
-            *((unsigned char*)(VIC_SPRITEPTRADR + i)) = 4 + i;
-        }
-
-        VIC.spr0_y = VIC.spr1_y = VIC.spr2_y = 223;
-
-        VIC.spr_ena = 0x7;
         textcolor(COLOR_YELLOW);
         DRAW_Screen(SCREEN_ingame, COLOR_WHITE, COLOR_LIGHTBLUE);
+        setupbasket();
 
         gametime=15;
 
