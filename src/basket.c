@@ -2,19 +2,19 @@
 #include "joystick.h"
 
 int x_pos;
+int i;
 
 void setupbasket()
 {
-    int i;
-    VIC.spr0_color = VIC.spr1_color = VIC.spr2_color = COLOR_BROWN;
     for(i=0; i<3; i++)
     {
         *((unsigned char*)(VIC_SPRITEPTRADR + i)) = 4 + i;
+        VIC.spr_color[i] = COLOR_BROWN;
+        VIC.spr_pos[i].y = 223;
     }
 
-    VIC.spr0_y = VIC.spr1_y = VIC.spr2_y = 223;
-
-    VIC.spr_ena = 0x7;
+    VIC.spr_ena |= 0x7;
+    VIC.spr_hi_x &=248;
     x_pos = 150;
 }
 
@@ -60,7 +60,9 @@ void movebasket()
     {
         VIC.spr_hi_x &=251;
     }
-    VIC.spr0_x = x_pos;
-    VIC.spr1_x = x_pos + 24;
-    VIC.spr2_x = x_pos + 48;
+
+    for(i=0;i<3;i++)
+    {
+        VIC.spr_pos[i].x = x_pos + i * 24;
+    }
 }
