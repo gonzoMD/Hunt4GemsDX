@@ -1,7 +1,7 @@
 #include "globals.h"
 #include "joystick.h"
 
-int x_pos = 150;
+int x_pos;
 
 void setupbasket()
 {
@@ -15,6 +15,7 @@ void setupbasket()
     VIC.spr0_y = VIC.spr1_y = VIC.spr2_y = 223;
 
     VIC.spr_ena = 0x7;
+    x_pos = 150;
 }
 
 void movebasket()
