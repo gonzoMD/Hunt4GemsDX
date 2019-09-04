@@ -10,7 +10,7 @@ void setupbasket()
     {
         *((unsigned char*)(VIC_SPRITEPTRADR + i)) = 4 + i;
         VIC.spr_color[i] = COLOR_BROWN;
-        VIC.spr_pos[i].y = 223;
+        VIC.spr_pos[i].y = 205;
     }
 
     VIC.spr_ena |= 0x7;

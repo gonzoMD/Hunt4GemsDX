@@ -4,6 +4,8 @@
 #include "basket.h"
 
 int gametime=75, level=1, score=0;
+extern int rasterirq();
+extern int stoprasterirq();
 
 void preparegame()
 {
@@ -54,18 +56,17 @@ void ingame()
         setupbasket();
 
         gametime=15;
-
+        
         t2=clock() + CLOCKS_PER_SEC;
+        rasterirq();
         while(gametime >= 0)
         {
-
             movebasket();
-
-            gotoxy(22, 0);
+            gotoxy(22, 24);
             cprintf("%2d", level);
-            gotoxy(27, 0);
+            gotoxy(27, 24);
             cprintf("%2d", gametime);
-            gotoxy(33, 0);
+            gotoxy(33, 24);
             cprintf("%6d", score);
 
             t1=clock();
@@ -75,6 +76,7 @@ void ingame()
                 t2 = clock() + CLOCKS_PER_SEC;
             }
         }
+        stoprasterirq();
     }
     iGameState = GSTATE_showhighscore;
 }
