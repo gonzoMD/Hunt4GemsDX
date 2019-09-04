@@ -7,6 +7,7 @@ extern char SCREEN_ingame[];
 extern char SPRITE_basket_l[];
 extern char SPRITE_basket_c[];
 extern char SPRITE_basket_r[];
+extern char SPRITE_guy[];
 extern char SPRITE_gem[];
 extern char SPRITE_count_1[];
 extern char SPRITE_count_2[];
