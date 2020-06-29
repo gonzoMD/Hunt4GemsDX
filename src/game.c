@@ -78,5 +78,5 @@ void ingame()
         }
         stoprasterirq();
     }
-    iGameState = GSTATE_showhighscore;
+    GameState = GSTATE_showhighscore;
 }

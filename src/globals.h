@@ -15,7 +15,7 @@ enum
 	GSTATE_newhighscore
 };
 
-extern int iGameState;
+extern int GameState;
 extern int gametime;
 extern int level;
 extern int score;

@@ -3,7 +3,7 @@
 #include "title.h"
 #include "game.h"
 
-int iGameState = GSTATE_title;
+int GameState = GSTATE_title;
 
 void setup()
 {
@@ -27,11 +27,11 @@ int main(void)
 
     while(1)
     {
-		switch (iGameState)
+		switch (GameState)
 		{
             case GSTATE_title:
                 showtitle();
-                iGameState = GSTATE_ingame;
+                GameState = GSTATE_ingame;
                 break;
     		case GSTATE_ingame:
                 ingame();
