@@ -6,7 +6,7 @@ enum
     BASKET_LEFT,
     BASKET_CENTER,
     BASKET_RIGHT,
-    BASKET_GUY
+    BASKET_GUY=7
 };
 
 void setupbasket(void);

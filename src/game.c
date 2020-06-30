@@ -2,6 +2,7 @@
 #include "drawing.h"
 #include "data.h"
 #include "basket.h"
+#include "gems.h"
 
 int gametime=75, level=1, score=0;
 extern int rasterirq();
@@ -54,6 +55,7 @@ void ingame()
         textcolor(COLOR_YELLOW);
         DRAW_Screen(SCREEN_ingame, COLOR_WHITE, COLOR_LIGHTBLUE);
         setupbasket();
+        setupgems();
 
         gametime=15;
         
@@ -62,6 +64,7 @@ void ingame()
         while(gametime >= 0)
         {
             movebasket();
+            movegems();
             gotoxy(22, 24);
             cprintf("%2d", level);
             gotoxy(27, 24);

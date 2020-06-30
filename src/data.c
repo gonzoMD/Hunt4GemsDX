@@ -588,4 +588,5 @@ void loaddata()
 	memcpy((5 * 64+VIC_BASEADR), SPRITE_basket_c, 63);
 	memcpy((6 * 64+VIC_BASEADR), SPRITE_basket_r, 63);
     memcpy((7 * 64+VIC_BASEADR), SPRITE_guy, 63);
+    memcpy((8 * 64+VIC_BASEADR), SPRITE_gem, 63);
 }
