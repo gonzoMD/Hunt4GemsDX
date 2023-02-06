@@ -63,3 +63,4 @@ bld/
 *.pidb
 *.svclog
 *.scc
+.vscode/*
