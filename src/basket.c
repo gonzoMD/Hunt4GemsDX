@@ -17,9 +17,9 @@ void setupbasket()
     VIC.spr_color[BASKET_GUY] = COLOR_LIGHTRED;
     VIC.spr_pos[BASKET_GUY].y = 191;
 
-    VIC.spr_ena |= 0b10000111;
-    VIC.spr_hi_x = 0b00000000;
-    VIC.spr_exp_y |= 0b10000000;
+    VIC.spr_ena |= 135;     // 10000111
+    VIC.spr_hi_x = 0;
+    VIC.spr_exp_y |= 128;   // 10000000
     x_pos = 150;
 }
 
@@ -43,27 +43,27 @@ void movebasket()
 
     if(x_pos>207)
     {
-        VIC.spr_hi_x |=0b00000100;
+        VIC.spr_hi_x |= 4;              // 00000100
         if(x_pos>231)
         {
-            VIC.spr_hi_x |=0b10000010;
+            VIC.spr_hi_x |= 134;        // 10000110
             if(x_pos>255)
             {
-                VIC.spr_hi_x |=0b00000001;
+                VIC.spr_hi_x |= 135;    // 10000111    
             }
             else
             {
-                VIC.spr_hi_x &=0b11111110;
+                VIC.spr_hi_x &= 254;    // 11111110
             }
         }
         else
         {
-            VIC.spr_hi_x &=0b01111101;
+            VIC.spr_hi_x &= 124;        // 01111100
         }
     }
     else
     {
-        VIC.spr_hi_x &=0b11111011;
+        VIC.spr_hi_x &= 248;            // 11111000
     }
 
     for(i=BASKET_LEFT;i<=BASKET_RIGHT;i++)
